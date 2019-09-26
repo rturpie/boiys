@@ -1,4 +1,7 @@
 import math
+import pygame
+import math
+
 class boid():
 
   def get_angle(self):
@@ -10,7 +13,20 @@ class boid():
     self.vx = vx
     self.vy = vy
 
-  def get_poly():
+  def update_position(self,dt):
+      self.x = self.vx*dt 
+      self.y = self.vy*dt
+
+  def draw_bird(self, screen, size):
+    theta = get_angle()
+    vertex1 = [int(math.cos(theta)*size/2) + self.x, int(math.sin(theta)*size/2)]
+    vertex2 = [int(math.cos(theta)*(-size/2) - math.sin(theta)*(size/4)) + self.x, int(math.sin(theta)*(-size/2) + math.cos(theta)*(size/4)) + self.y]
+    vertex3 = [int(math.cos(theta)*(-size/2) - math.sin(theta)*(-size/4)) + self.x, int(math.sin(theta)*(-size/2) + math.cos(theta)*(-size/4)) + self.y]
+    pygame.draw.polygon(screen, (244,233,222) , [vertex1, vertex2, vertex3], 5)
+
+
+
+
     
 
 if __name__ == "__main__":
