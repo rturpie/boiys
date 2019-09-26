@@ -18,7 +18,7 @@ class boid():
       self.y = self.vy*dt
 
   def draw_bird(self, screen, size):
-    theta = get_angle()
+    theta = self.get_angle()
     vertex1 = [int(math.cos(theta)*size/2) + self.x, int(math.sin(theta)*size/2)]
     vertex2 = [int(math.cos(theta)*(-size/2) - math.sin(theta)*(size/4)) + self.x, int(math.sin(theta)*(-size/2) + math.cos(theta)*(size/4)) + self.y]
     vertex3 = [int(math.cos(theta)*(-size/2) - math.sin(theta)*(-size/4)) + self.x, int(math.sin(theta)*(-size/2) + math.cos(theta)*(-size/4)) + self.y]
