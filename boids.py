@@ -15,26 +15,28 @@ class boid():
     self.max_width = max_width
     self.max_height = max_height
 
+    print (max_width)
+    print (max_height)
+
   def update_position(self,dt):
-      self.x = self.vx*dt 
-      self.y = self.vy*dt
+      self.x = self.x + self.vx*dt 
+      self.y = self.y + self.vy*dt
 
       if self.x <= 0:
         self.x = self.max_width + self.x
       if self.x >= self.max_width:
-        self.x = 0 + self.x 
+        self.x = 0 
 
       if self.y <= 0:
         self.y = self.max_height + self.y
       if self.y >= self.max_height:
-        self.y = 0 + self.y
+        self.y = 0
 
   def draw_bird(self, screen, size):
     theta = self.get_angle()
     vertex1 = [int(math.cos(theta)*size/2) + self.x, int(math.sin(theta)*size/2) + self.y]
     vertex2 = [int(math.cos(theta)*(-size/2) - math.sin(theta)*(size/4)) + self.x, int(math.sin(theta)*(-size/2) + math.cos(theta)*(size/4)) + self.y]
     vertex3 = [int(math.cos(theta)*(-size/2) - math.sin(theta)*(-size/4)) + self.x, int(math.sin(theta)*(-size/2) + math.cos(theta)*(-size/4)) + self.y]
-    print(vertex1, vertex2, vertex3)
     pygame.draw.polygon(screen, (244,233,222) , [vertex1, vertex2, vertex3], 0)
 
 
