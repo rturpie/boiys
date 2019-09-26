@@ -23,7 +23,7 @@ class boid():
     vertex2 = [int(math.cos(theta)*(-size/2) - math.sin(theta)*(size/4)) + self.x, int(math.sin(theta)*(-size/2) + math.cos(theta)*(size/4)) + self.y]
     vertex3 = [int(math.cos(theta)*(-size/2) - math.sin(theta)*(-size/4)) + self.x, int(math.sin(theta)*(-size/2) + math.cos(theta)*(-size/4)) + self.y]
     print(vertex1, vertex2, vertex3)
-    pygame.draw.polygon(screen, (244,233,222) , [vertex1, vertex2, vertex3], 5)
+    pygame.draw.polygon(screen, (244,233,222) , [vertex1, vertex2, vertex3], 0)
 
 
 
