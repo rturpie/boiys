@@ -13,11 +13,16 @@ tweety = boids.boid(100,200,20,20, width, height)
 
 tweety.draw_bird(screen,20)
 
+boid_list = boids.boid.create_random_boids(width, height, 20)
+
 
 
 running = True
 while running:
   screen.fill(background_colour)
+  for boid in boid_list:
+    boid.draw_bird(screen,20)
+    boid.update_position(dt)
   tweety.draw_bird(screen,20)
   tweety.update_position(dt)
   pygame.display.flip()

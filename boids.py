@@ -1,6 +1,7 @@
 import math
 import pygame
 import math
+import random
 
 class boid():
 
@@ -38,6 +39,16 @@ class boid():
     vertex2 = [int(math.cos(theta)*(-size/2) - math.sin(theta)*(size/4)) + self.x, int(math.sin(theta)*(-size/2) + math.cos(theta)*(size/4)) + self.y]
     vertex3 = [int(math.cos(theta)*(-size/2) - math.sin(theta)*(-size/4)) + self.x, int(math.sin(theta)*(-size/2) + math.cos(theta)*(-size/4)) + self.y]
     pygame.draw.polygon(screen, (244,233,222) , [vertex1, vertex2, vertex3], 0)
+
+  @staticmethod
+  def create_random_boids(width, height, n):
+    boid_list = []
+    for _ in range(n):
+      theta = random.random()*2*math.pi - math.pi
+      boy = boid(random.randint(0,width), random.randint(0,height), 20*math.cos(theta), 20*math.sin(theta), width, height)
+      boid_list.append(boy)
+    return boid_list
+
 
 
 
