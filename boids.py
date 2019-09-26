@@ -7,15 +7,27 @@ class boid():
   def get_angle(self):
     return math.atan2(self.vy,self.vx)
 
-  def __init__(self, x, y, vx, vy):
+  def __init__(self, x, y, vx, vy, max_width=1000, max_height=1000):
     self.x = x
     self.y = y
     self.vx = vx
     self.vy = vy
+    self.max_width = max_width
+    self.max_height = max_height
 
   def update_position(self,dt):
       self.x = self.vx*dt 
       self.y = self.vy*dt
+
+      if self.x <= 0:
+        self.x = self.max_width + self.x
+      if self.x >= self.max_width:
+        self.x = 0 + self.x 
+
+      if self.y <= 0:
+        self.y = self.max_height + self.y
+      if self.y >= self.max_height:
+        self.y = 0 + self.y
 
   def draw_bird(self, screen, size):
     theta = self.get_angle()
