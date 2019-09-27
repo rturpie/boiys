@@ -34,6 +34,15 @@ class boid():
       if self.y >= self.max_height:
         self.y = 0
 
+  def draw_danger(self, screen):
+    pygame.draw.circle(screen, (255, 0, 0, 1), (int(self.x), int(self.y)), 40, 1)
+
+  def distance_to(self, bd):
+    return math.sqrt((bd.x - self.x)**2 + (bd.y - self.y)**2)
+
+  def angle_to(self, bd):
+    return self.get_angle() - math.atan2(bd.y-self.y, bd.x-self.x)
+
   def draw_bird(self, screen, size):
     theta = self.get_angle()
     vertex1 = [int(math.cos(theta)*size/2) + self.x, int(math.sin(theta)*size/2) + self.y]
