@@ -8,11 +8,12 @@ class boid():
   def get_angle(self):
     return math.atan2(self.vy,self.vx)
 
-  def __init__(self, x, y, vx, vy, max_width=1000, max_height=1000):
+  def __init__(self, x, y, vx, vy, col, max_width=1000, max_height=1000):
     self.x = x
     self.y = y
     self.vx = vx
     self.vy = vy
+    self.col = col
     self.max_width = max_width
     self.max_height = max_height
 
@@ -38,14 +39,17 @@ class boid():
     vertex1 = [int(math.cos(theta)*size/2) + self.x, int(math.sin(theta)*size/2) + self.y]
     vertex2 = [int(math.cos(theta)*(-size/2) - math.sin(theta)*(size/4)) + self.x, int(math.sin(theta)*(-size/2) + math.cos(theta)*(size/4)) + self.y]
     vertex3 = [int(math.cos(theta)*(-size/2) - math.sin(theta)*(-size/4)) + self.x, int(math.sin(theta)*(-size/2) + math.cos(theta)*(-size/4)) + self.y]
-    pygame.draw.polygon(screen, (244,233,222) , [vertex1, vertex2, vertex3], 0)
+    pygame.draw.polygon(screen, self.col , [vertex1, vertex2, vertex3], 0)
 
   @staticmethod
   def create_random_boids(width, height, n):
     boid_list = []
+    col_lst = [(224, 254, 254), (199, 206, 234), (255, 218, 193), (255, 154, 162), (255, 255, 216), (181, 234, 215)]
     for _ in range(n):
       theta = random.random()*2*math.pi - math.pi
-      boy = boid(random.randint(0,width), random.randint(0,height), 20*math.cos(theta), 20*math.sin(theta), width, height)
+      col_num = random.randint(0, len(col_lst) - 1)
+      print(col_num)
+      boy = boid(random.randint(0,width), random.randint(0,height), 20*math.cos(theta), 20*math.sin(theta), col_lst[col_num], width, height)
       boid_list.append(boy)
     return boid_list
 
