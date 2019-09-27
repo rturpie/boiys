@@ -2,6 +2,7 @@ import math
 import pygame
 import math
 import random
+from constants import *
 
 class boid():
 
@@ -58,7 +59,7 @@ class boid():
       theta = random.random()*2*math.pi - math.pi
       col_num = random.randint(0, len(col_lst) - 1)
       print(col_num)
-      boy = boid(random.randint(0,width), random.randint(0,height), 20*math.cos(theta), 20*math.sin(theta), col_lst[col_num], width, height)
+      boy = boid(random.randint(0,width), random.randint(0,height), SPEED*math.cos(theta), SPEED*math.sin(theta), col_lst[col_num], width, height)
       boid_list.append(boy)
     return boid_list
 
