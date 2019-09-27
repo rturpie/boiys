@@ -9,7 +9,7 @@ class boid():
   def get_angle(self):
     return math.atan2(self.vy,self.vx)
 
-  def __init__(self, x, y, vx, vy, col, max_width=1000, max_height=1000):
+  def __init__(self, x, y, vx, vy, col=(0,0,0), max_width=1000, max_height=1000):
     self.x = x
     self.y = y
     self.vx = vx
