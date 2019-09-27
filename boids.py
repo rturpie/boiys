@@ -17,7 +17,7 @@ class boid():
     self.col = col
     self.max_width = max_width
     self.max_height = max_height
-pygame
+
     print (max_width)
     print (max_height)
 
